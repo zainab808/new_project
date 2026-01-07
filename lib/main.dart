@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/views/readytoscan_screen.dart';
 import 'package:new_project/views/scaning_screen.dart';
+import 'package:new_project/views/tag_recognization_screen.dart';
 
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   
   debugShowCheckedModeBanner: false,
     
-      home:ScanningScreen()
+      home:TagRecognizedScreen()
     );
   }
 }
