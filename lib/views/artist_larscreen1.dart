@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/components/episode.dart' show BuildTag;
 
-class ArtistProfileScreen extends StatelessWidget {
-  const ArtistProfileScreen({super.key});
+class ArtistLarscreen1 extends StatelessWidget {
+  const ArtistLarscreen1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(24),
                                   image: const DecorationImage(
-                                    image: AssetImage('assets/artist4.png'),
+                                    image: AssetImage('assets/lac.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -97,7 +97,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
-                                      "Russ",
+                                      "LaRussell",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
@@ -106,7 +106,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      "15.5 million followers",
+                                      "21 million followers",
                                       style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 13,
@@ -137,7 +137,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                 height: 30,
                                 width: 30,
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/jack.png"))
+                                  image: DecorationImage(image: AssetImage("assets/jack2.png"))
                                 ),
 
                               )),
@@ -204,7 +204,7 @@ class ArtistProfileScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: const [
-                        Image(image: AssetImage("assets/Rectangle.png")),
+                        Image(image: AssetImage("assets/lac6.png")),
                         // Icon(Icons.play_circle_fill, size: 40),
                         SizedBox(width: 12),
                         Expanded(
@@ -270,34 +270,31 @@ Padding(
   
       /// 🎵 SONG LIST (ROW CONTAINERS)
       _songRow(
-        image: 'assets/artist2.png',
-        title: 'Losin Control',
-        subtitle: 'Russ • 88M plays',
+        image: 'assets/lac4.png',
+        title: 'I,m Up',
+        subtitle: 'LaRussell• 88M plays',
       ),
   
       // const SizedBox(height: 12),
   
+     
+      
       _songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),
-      _songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
+        image: 'assets/lac2.png',
+        title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
       ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
+        image: 'assets/lac2.png',
+         title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
       ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
+        image: 'assets/lac2.png',
+           title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
       ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
+        image: 'assets/lac2.png',
+          title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
       ),
       
     ],

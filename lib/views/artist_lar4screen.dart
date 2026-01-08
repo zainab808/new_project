@@ -661,35 +661,35 @@ class Song {
 }
 
 /// ---------------- MAIN SCREEN ----------------
-class Artist2ProfileScreen extends StatefulWidget {
+class ArtistLar4screen extends StatefulWidget {
    
-  const Artist2ProfileScreen({super.key});
+  const ArtistLar4screen({super.key});
 
   @override
-  State<Artist2ProfileScreen> createState() =>
-      _Artist2ProfileScreenState();
+  State<ArtistLar4screen> createState() =>
+      _ArtistLar4screenState();
 }
 
-class _Artist2ProfileScreenState
-    extends State<Artist2ProfileScreen> {
+class _ArtistLar4screenState
+    extends State<ArtistLar4screen> {
       
   Song? selectedSong;
 
   final List<Song> songs = [
     Song(
-      image: 'assets/artist1.png',
-      title: 'Losin Control',
-      subtitle: 'Russ • 88M plays',
+            image: 'assets/lac4.png',
+        title: 'I,m Up',
+        subtitle: 'LaRussell• 88M plays',
     ),
     Song(
-      image: 'assets/artist2.png',
-      title: 'Sanctified',
-      subtitle: 'Russ • 204M plays',
+     image: 'assets/lac2.png',
+        title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
     ),
     Song(
-      image: 'assets/artist1.png',
-      title: 'Best On Earth',
-      subtitle: 'Russ • 150M plays',
+   image: 'assets/lac2.png',
+        title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
     ),
   ];
 
@@ -741,7 +741,7 @@ class _Artist2ProfileScreenState
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(24),
                                   image: const DecorationImage(
-                                    image: AssetImage('assets/artist4.png'),
+                                    image: AssetImage('assets/lac.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -784,7 +784,7 @@ class _Artist2ProfileScreenState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
-                                      "Russ",
+                                      "LaRussell",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
@@ -793,7 +793,7 @@ class _Artist2ProfileScreenState
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      "15.5 million followers",
+                                      "21 million followers",
                                       style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 13,
@@ -824,7 +824,7 @@ class _Artist2ProfileScreenState
                                 height: 30,
                                 width: 30,
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/jack.png"))
+                                  image: DecorationImage(image: AssetImage("assets/jack2.png"))
                                 ),
 
                               )),
@@ -891,7 +891,7 @@ class _Artist2ProfileScreenState
                     ),
                     child: Row(
                       children: const [
-                        Image(image: AssetImage("assets/Rectangle.png")),
+                        Image(image: AssetImage("assets/lac6.png")),
                         // Icon(Icons.play_circle_fill, size: 40),
                         SizedBox(width: 12),
                         Expanded(
@@ -1041,7 +1041,7 @@ Widget _songTile({
               ],
             ),
           ),
-          const Icon(Icons.play_arrow,
+          const Icon(Icons.more_vert,
               color: Colors.white),
         ],
       ),
@@ -1143,11 +1143,11 @@ class _TabsRow extends StatelessWidget {
         children: [
           _tab("All", isActive: false),
           SizedBox(width: spacing),
-          _tab("Songs", isActive: false),
+          _tab("Songs", isActive: true),
           SizedBox(width: spacing),
           _tab("Album", isActive: false),
           SizedBox(width: spacing),
-          _tab("Merch", isActive: true),
+          _tab("Merch", isActive: false),
           SizedBox(width: spacing),
           _tab("About", isActive: false),
         ],

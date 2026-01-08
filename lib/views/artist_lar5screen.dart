@@ -825,8 +825,8 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/components/episode.dart' show BuildTag;
 
-class Artist5ProfileScreen extends StatelessWidget {
-  const Artist5ProfileScreen({super.key});
+class ArtistLar5screen extends StatelessWidget {
+  const ArtistLar5screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -838,12 +838,12 @@ class Artist5ProfileScreen extends StatelessWidget {
 
           // Sample albums list
           final albums = [
-            'assets/album1.png',
-            'assets/album2.png',
-            'assets/album1.png',
-            'assets/album2.png',
-            'assets/album1.png',
-            'assets/album2.png',
+            'assets/lac2.png',
+            'assets/lac3.png',
+            'assets/lac2.png',
+            'assets/lac3.png',
+            'assets/lac2.png',
+            'assets/lac3.png',
           ];
 
           return Stack(
@@ -925,7 +925,7 @@ class Artist5ProfileScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
-                                      "Russ",
+                                      "LaRusssell",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
@@ -934,7 +934,7 @@ class Artist5ProfileScreen extends StatelessWidget {
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      "15.5 million followers",
+                                      "21 million followers",
                                       style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 13,
@@ -955,7 +955,7 @@ class Artist5ProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: w * 0.06),
                         child: Row(
                           children: [
-                            _imageBtn('assets/jack.png'),
+                            _imageBtn('assets/jack2.png'),
                             const SizedBox(width: 12),
                             InkWell(
                               onTap: () {},
@@ -997,7 +997,7 @@ class Artist5ProfileScreen extends StatelessWidget {
                           ),
                           child: Row(
                             children: const [
-                              Image(image: AssetImage("assets/Rectangle.png")),
+                              Image(image: AssetImage("assets/lac6.png")),
                               SizedBox(width: 12),
                               Expanded(
                                 child: Text(

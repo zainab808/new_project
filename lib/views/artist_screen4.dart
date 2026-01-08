@@ -340,70 +340,59 @@ Padding(
 
 }
 
-/// TABS
 class _TabsRow extends StatelessWidget {
   const _TabsRow();
 
   @override
   Widget build(BuildContext context) {
-    return 
-SingleChildScrollView(
-  scrollDirection: Axis.horizontal,
-  physics: const BouncingScrollPhysics(),
-  padding: const EdgeInsets.symmetric(horizontal: 16), // optional left-right padding
-  child: Row(
-    children: [
-      InkWell(
-        onTap: () {},
-        child: BuildTag(
-          text: "All",
-           bgColor: Colors.white.withOpacity(0.06),
-        textColor: Colors.white,
-        ),
-      ),
-      const SizedBox(width: 10),
-      InkWell(
-        onTap: () {},
-        child: BuildTag(
-          text: "Songs",
-              bgColor: Colors.white,
-               textColor: Colors.black,
-     
-       
-        ),
-      ),
-      const SizedBox(width: 10),
-      InkWell(
-        onTap: () {},
-        child: BuildTag(
-          text: "Album",
-          bgColor: Colors.white.withOpacity(0.06),
-          textColor: Colors.white,
-        ),
-      ),
-      const SizedBox(width: 10),
-      InkWell(
-        onTap: () {},
-        child: BuildTag(
-          text: "Merch",
-          bgColor: Colors.white.withOpacity(0.06),
-          textColor: Colors.white,
-        ),
-      ),
-      const SizedBox(width: 10),
-      InkWell(
-        onTap: () {},
-        child: BuildTag(
-          text: "About",
-          bgColor: Colors.white.withOpacity(0.06),
-          textColor: Colors.white,
-        ),
-      ),
-    ],
-  ),
-);
+    final w = MediaQuery.of(context).size.width;
 
+    // small horizontal spacing
+    final double spacing = w * 0.02;
 
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.symmetric(horizontal: w * 0.04, vertical: 5),
+      child: Row(
+        children: [
+          _tab("All", isActive: false),
+          SizedBox(width: spacing),
+          _tab("Songs", isActive: false),
+          SizedBox(width: spacing),
+          _tab("Album", isActive: false),
+          SizedBox(width: spacing),
+          _tab("Merch", isActive: true),
+          SizedBox(width: spacing),
+          _tab("About", isActive: false),
+        ],
+      ),
+    );
+  }
+
+  Widget _tab(String text, {required bool isActive}) {
+    return InkWell(
+      onTap: () {},
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), // small compact tab
+        decoration: BoxDecoration(
+          color: isActive ? Colors.white : Colors.white.withOpacity(0.06),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isActive ? Colors.black : Colors.white,
+            fontSize: 13, // slightly smaller font
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
   // Row(
   //                 children: [
@@ -454,8 +443,8 @@ SingleChildScrollView(
   //                 ],
   //               );
   
-  }
-}
+  
+
 
 class _TabText extends StatelessWidget {
   final String text;

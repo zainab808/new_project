@@ -1,51 +1,104 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:new_project/components/episode.dart' show BuildTag;
+import 'package:new_project/components/episode.dart';
 
-class ArtistProfileScreen extends StatelessWidget {
-  const ArtistProfileScreen({super.key});
+/// ---------------- SONG MODEL ----------------
+class Song {
+  final String image;
+  final String title;
+  final String subtitle;
+
+  Song({
+    required this.image,
+    required this.title,
+    required this.subtitle,
+  });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Song && title == other.title;
+
+  @override
+  int get hashCode => title.hashCode;
+}
+
+/// ---------------- MAIN SCREEN ----------------
+class ArtistLar3screen extends StatefulWidget {
+   
+  const ArtistLar3screen({super.key});
+
+  @override
+  State<ArtistLar3screen> createState() =>
+      _ArtistLar3screenState();
+}
+
+class _ArtistLar3screenState
+    extends State<ArtistLar3screen> {
+      
+  Song? selectedSong;
+
+  final List<Song> songs = [
+    Song(
+      image: 'assets/lac4.png',
+        title: 'I,m Up',
+        subtitle: 'LaRussell• 88M plays',
+    ),
+   
+     Song(
+     image: 'assets/lac2.png',
+        title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
+    ),
+   
+    Song(
+     image: 'assets/lac2.png',
+        title: 'Cruel Summer',
+        subtitle: 'LaRussell• • 192M plays',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          final w = constraints.maxWidth;
-          final h = constraints.maxHeight;
-
-          return Stack(
-            children: [
-              /// Background
-              Container(
-                width: w,
-                height: h,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/background.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+       
+      body:
+       
+       Stack(
+        children: [
+          
+          /// BACKGROUND IMAGE
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/background.jpg'),
+                fit: BoxFit.cover,
               ),
+            ),
+          ),
 
-              /// Overlay
-              Container(
-                width: w,
-                height: h,
-                color: Colors.black.withOpacity(0.55),
-              ),
+          /// DARK OVERLAY
+          Container(color: Colors.black.withOpacity(0.6)),
 
-              SafeArea(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
+          /// MAIN CONTENT
+          SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.only(bottom: 130),
+              child: Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                children: [
+                  /// ---------- TOP ARTIST SECTION ----------
+                  Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                      children: [
 
-                      /// ARTIST IMAGE CARD
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: w * 0.06),
+                  Padding(
+                        padding: EdgeInsets.symmetric(horizontal:5),
                         child: AspectRatio(
                           aspectRatio: 1,
                           child: Stack(
@@ -54,7 +107,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(24),
                                   image: const DecorationImage(
-                                    image: AssetImage('assets/artist4.png'),
+                                    image: AssetImage('assets/lac.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -97,7 +150,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
-                                      "Russ",
+                                      "LaRussell",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 22,
@@ -106,7 +159,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                     ),
                                     SizedBox(height: 4),
                                     Text(
-                                      "15.5 million followers",
+                                      "21 million followers",
                                       style: TextStyle(
                                         color: Colors.white70,
                                         fontSize: 13,
@@ -124,7 +177,7 @@ class ArtistProfileScreen extends StatelessWidget {
 
                       /// 🔘 ACTION ROW (ALL IMAGES)
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: w * 0.06),
+                        padding: EdgeInsets.symmetric(horizontal: 10),
                         child: Row(
                           children: [
                             /// image BEFORE follow
@@ -137,7 +190,7 @@ class ArtistProfileScreen extends StatelessWidget {
                                 height: 30,
                                 width: 30,
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(image: AssetImage("assets/jack.png"))
+                                  image: DecorationImage(image: AssetImage("assets/jack2.png"))
                                 ),
 
                               )),
@@ -185,14 +238,14 @@ class ArtistProfileScreen extends StatelessWidget {
                             /// play image
                             InkWell(
                               onTap: (){},
-                              child: _imageBtn('assets/vector.png')),
+                              child: _imageBtn('assets/Solid.png')),
                           ],
                         ),
                       ),
 
                       const SizedBox(height: 10),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 10),
                     child: Container(
                       height: 40,
                     padding: const EdgeInsets.all(8),
@@ -204,7 +257,7 @@ class ArtistProfileScreen extends StatelessWidget {
                     ),
                     child: Row(
                       children: const [
-                        Image(image: AssetImage("assets/Rectangle.png")),
+                        Image(image: AssetImage("assets/lac6.png")),
                         // Icon(Icons.play_circle_fill, size: 40),
                         SizedBox(width: 12),
                         Expanded(
@@ -218,46 +271,23 @@ class ArtistProfileScreen extends StatelessWidget {
                     ),
                                     ),
                   ),
+SizedBox(height: 10,),
+                    const _TabsRow(),
 
-                      /// BOTTOM SECTION
-                      // Column(
-                      //   crossAxisAlignment: CrossAxisAlignment.start,
-                      //   children: const [
-                      //     _TabsRow(),
-                      //     SizedBox(height: 22),
-                      //     Text(
-                      //       "Top Songs",
-                      //       style: TextStyle(
-                      //         color: Colors.white,
-                      //         fontSize: 20,
-                      //         fontWeight: FontWeight.bold,
-                      //       ),
-                      //     ),
-                      //     SizedBox(height: 20),
-                      //     _SongTile(
-                      //       title: "Losin Control",
-                      //       plays: "88M plays",
-                      //     ),
-                      //     SizedBox(height: 14),
-                      //     _SongTile(
-                      //       title: "Sanctified",
-                      //       plays: "204M plays",
-                      //     ),
-                      //   ],
-                      // ),
-             
 
-Padding(
-  padding: const EdgeInsets.all(15.0),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const _TabsRow(),
-  
-      const SizedBox(height: 18),
-  
-      /// 🔹 Top Songs Title
-      const Text(
+
+                 ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  /// ---------- TOP SONGS ----------
+                  const Padding(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 16),
+                    child: 
+                   const Text(
         "Top Songs",
         style: TextStyle(
           color: Colors.white,
@@ -265,65 +295,188 @@ Padding(
           fontWeight: FontWeight.w400,
         ),
       ),
-  
-      const SizedBox(height: 14),
-  
-      /// 🎵 SONG LIST (ROW CONTAINERS)
-      _songRow(
-        image: 'assets/artist2.png',
-        title: 'Losin Control',
-        subtitle: 'Russ • 88M plays',
-      ),
-  
-      // const SizedBox(height: 12),
-  
-      _songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),
-      _songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),_songRow(
-        image: 'assets/artist1.png',
-        title: 'Sanctified',
-        subtitle: 'Russ • 204M plays',
-      ),
-      
-    ],
-  ),
-),
-
-
-
-
-
-
-
-
-             
-                    ],
                   ),
-                ),
+
+                  const SizedBox(height: 12),
+
+                  /// SONG LIST
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16),
+                    child: Column(
+                      children: songs
+                          .map(
+                            (song) => _songTile(
+                              song: song,
+                              isSelected:
+                                  selectedSong == song,
+                              onTap: () {
+                                setState(() {
+                                  selectedSong = song;
+                                });
+                              },
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          );
-        },
+            ),
+          ),
+
+          /// ---------- MINI PLAYER ----------
+          if (selectedSong != null)
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: SafeArea(
+                child:
+                    _miniPlayer(selectedSong!),
+              ),
+            ),
+        ],
       ),
     );
   }
+}
 
-  /// IMAGE BUTTON
+/// ---------------- ACTION BUTTON ----------------
+Widget _actionButton(String text) {
+  return Container(
+    padding:
+        const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: Colors.white),
+    ),
+    child: Text(
+      text,
+      style: const TextStyle(color: Colors.white),
+    ),
+  );
+}
+
+/// ---------------- SONG TILE ----------------
+Widget _songTile({
+  required Song song,
+  required bool isSelected,
+  required VoidCallback onTap,
+}) {
+  return InkWell(
+    onTap: onTap,
+    child: Padding(
+      padding:
+          const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius:
+                BorderRadius.circular(8),
+            child: Image.asset(
+              song.image,
+              width: 55,
+              height: 55,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
+              children: [
+                Text(
+                  song.title,
+                  style: TextStyle(
+                    color: isSelected
+                        ? Color(0xff00FF44)// ✅ ONLY HERE
+                        : Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  song.subtitle,
+                  style: const TextStyle(
+                    color: Colors.white60,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Icon(Icons.more_vert,
+              color: Colors.white),
+        ],
+      ),
+    ),
+  );
+}
+
+/// ---------------- MINI PLAYER (NO GREEN) ----------------
+Widget _miniPlayer(Song song) {
+  return Container(
+    height: 75,
+    margin: const EdgeInsets.all(12),
+    padding:
+        const EdgeInsets.symmetric(horizontal: 12),
+    decoration: BoxDecoration(
+      color: const Color(0xFF1C2236),
+      borderRadius: BorderRadius.circular(18),
+    ),
+    child: Row(
+      children: [
+        ClipRRect(
+          borderRadius:
+              BorderRadius.circular(10),
+          child: Image.asset(
+            song.image,
+            width: 50,
+            height: 50,
+            fit: BoxFit.cover,
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            mainAxisAlignment:
+                MainAxisAlignment.center,
+            crossAxisAlignment:
+                CrossAxisAlignment.start,
+            children: [
+              Text(
+                song.title,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 4),
+              const Text(
+                "LaRussell",
+                style: TextStyle(
+                    color: Colors.white60,
+                    fontSize: 12),
+              ),
+            ],
+          ),
+        ),
+        const Icon(Icons.skip_previous,
+            color: Colors.white),
+        const SizedBox(width: 8),
+        const Icon(Icons.pause_circle_filled,
+            color: Colors.white,
+            size: 34),
+        const SizedBox(width: 8),
+        const Icon(Icons.skip_next,
+            color: Colors.white),
+      ],
+    ),
+  );
+}
+
   Widget _imageBtn(String asset) {
     return Container(
       width: 30,
@@ -337,9 +490,6 @@ Padding(
       ),
     );
   }
-
-}
-
 
 class _TabsRow extends StatelessWidget {
   const _TabsRow();
@@ -393,134 +543,4 @@ class _TabsRow extends StatelessWidget {
       ),
     );
   }
-}
-
-class _TabText extends StatelessWidget {
-  final String text;
-  final bool active;
-
-  const _TabText(this.text, this.active);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        color: active ? Colors.white : Colors.white60,
-        fontWeight: active ? FontWeight.bold : FontWeight.normal,
-      ),
-    );
-  }
-}
-
-/// SONG TILE
-class _SongTile extends StatelessWidget {
-  final String title;
-  final String plays;
-
-  const _SongTile({required this.title, required this.plays});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 55,
-          height: 55,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: const DecorationImage(
-              image: AssetImage('assets/more.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        const SizedBox(width: 14),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              plays,
-              style: const TextStyle(color: Colors.white60),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-
-Widget _songRow({
-  required String image,
-  required String title,
-  required String subtitle,
-}) {
-  return Container(
-    padding: const EdgeInsets.all(10),
-    decoration: BoxDecoration(
-      // color: Colors.white.withOpacity(0.06),
-      borderRadius: BorderRadius.circular(14),
-    ),
-    child: Row(
-      children: [
-        /// Song Image
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.asset(
-            image,
-            width: 55,
-            height: 55,
-            fit: BoxFit.cover,
-          ),
-        ),
-
-        const SizedBox(width: 12),
-
-        /// Title + subtitle
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 15,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                subtitle,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white60,
-                  fontSize: 12,
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        /// Play icon image
-        Image.asset(
-          'assets/more.png',
-          width: 22,
-          height: 22,
-          color: Colors.white,
-        ),
-      ],
-    ),
-  );
 }

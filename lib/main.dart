@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/views/artist_lar2screen.dart';
+import 'package:new_project/views/artist_lar3screen.dart';
+import 'package:new_project/views/artist_lar4screen.dart';
+import 'package:new_project/views/artist_lar5screen.dart';
+import 'package:new_project/views/artist_lar6screen.dart';
+import 'package:new_project/views/artist_lar7screen.dart';
+import 'package:new_project/views/artist_larscreen1.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 
 import 'package:new_project/views/artist_screen1.dart';
 import 'package:new_project/views/artist_screen2.dart';
 import 'package:new_project/views/artist_screen4.dart';
 import 'package:new_project/views/artist_screen5.dart';
+import 'package:new_project/views/artist_screen6.dart';
+import 'package:new_project/views/artist_screen7.dart';
+import 'package:new_project/views/artist_screen8.dart';
 
 import 'package:new_project/views/readytoscan_screen.dart';
 import 'package:new_project/views/scaning_screen.dart';
@@ -27,7 +37,7 @@ class MyApp extends StatelessWidget {
   debugShowCheckedModeBanner: false,
     
       home:
-      Artist5ProfileScreen()
+      ArtistLar7screen()
       // TagRecognizedScreen()
       // ScanningScreen()
       // ReadyToScanScreen()
