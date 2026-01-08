@@ -432,7 +432,7 @@ class _ReadyToScanScreenState extends State<ReadyToScanScreen> {
             'assets/background.jpg',
             width: size.width,
             height: size.height,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ),
 
           // Black overlay
@@ -457,8 +457,8 @@ class _ReadyToScanScreenState extends State<ReadyToScanScreen> {
                   "Ready to scan",
                   style: TextStyle(
                       color: Color(0xffFFFFFF),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w300),
+                      fontSize: 17,
+                      fontWeight: FontWeight.w200),
                 ),
                 const SizedBox(height: 6),
                 const Text(
@@ -468,7 +468,7 @@ class _ReadyToScanScreenState extends State<ReadyToScanScreen> {
                   style: TextStyle(
                       color: Color(0xffFFFFFF),
 
-                     fontSize: 14),
+                     fontSize: 13),
                 ),
               ],
             ),
@@ -477,80 +477,81 @@ class _ReadyToScanScreenState extends State<ReadyToScanScreen> {
       ),
 
       // Custom Bottom Navigation Bar
-      bottomNavigationBar: Container(
-        height: 70,
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        decoration: BoxDecoration(
-          color: Colors.black,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.5),
-              blurRadius: 8,
-            )
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(navItems.length, (index) {
-            bool isActive = index == _currentIndex;
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  _currentIndex = index;
-                });
-              },
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 250),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                decoration: isActive
-                    ? BoxDecoration(
-                        color: const Color(0xff372695),
-                        borderRadius: BorderRadius.circular(20),
-                      )
-                    : null,
-                child: isActive
-                    ? Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            navItems[index]['icon']!,
-                            width: 22,
-                            height: 22,
-                            color: Colors.white,
-                          ),
-                          const SizedBox(width: 6),
-                          Text(
-                            navItems[index]['label']!,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      )
-                    : Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            navItems[index]['icon']!,
-                            width: 22,
-                            height: 22,
-                            color: Colors.white,
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            navItems[index]['label']!,
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-              ),
-            );
-          }),
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   height: 70,
+      //   padding: const EdgeInsets.symmetric(horizontal: 12),
+      //   decoration: BoxDecoration(
+      //     color: Colors.black,
+      //     boxShadow: [
+      //       BoxShadow(
+      //         color: Colors.black.withOpacity(0.5),
+      //         blurRadius: 8,
+      //       )
+      //     ],
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: List.generate(navItems.length, (index) {
+      //       bool isActive = index == _currentIndex;
+      //       return GestureDetector(
+      //         onTap: () {
+      //           setState(() {
+      //             _currentIndex = index;
+      //           });
+      //         },
+      //         child: AnimatedContainer(
+      //           duration: const Duration(milliseconds: 250),
+      //           padding:
+      //               const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+      //           decoration: isActive
+      //               ? BoxDecoration(
+      //                   color: const Color(0xff372695),
+      //                   borderRadius: BorderRadius.circular(20),
+      //                 )
+      //               : null,
+      //           child: isActive
+      //               ? Row(
+      //                   mainAxisSize: MainAxisSize.min,
+      //                   children: [
+      //                     Image.asset(
+      //                       navItems[index]['icon']!,
+      //                       width: 22,
+      //                       height: 22,
+      //                       color: Colors.white,
+      //                     ),
+      //                     const SizedBox(width: 6),
+      //                     Text(
+      //                       navItems[index]['label']!,
+      //                       style: const TextStyle(
+      //                           color: Colors.white,
+      //                           fontWeight: FontWeight.w500),
+      //                     ),
+      //                   ],
+      //                 )
+      //               : Column(
+      //                   mainAxisSize: MainAxisSize.min,
+      //                   children: [
+      //                     Image.asset(
+      //                       navItems[index]['icon']!,
+      //                       width: 18,
+      //                       height: 18,
+      //                       color: Colors.white,
+      //                     ),
+      //                     const SizedBox(height: 4),
+      //                     Text(
+      //                       navItems[index]['label']!,
+      //                       style:  TextStyle(
+      //                         fontSize: 10,
+      //                           color: Colors.white,
+      //                           fontWeight: FontWeight.w400),
+      //                     ),
+      //                   ],
+      //                 ),
+      //         ),
+      //       );
+      //     }),
+      //   ),
+      // ),
     );
   }
 }

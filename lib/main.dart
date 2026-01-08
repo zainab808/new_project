@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:new_project/views/artist_screeen3.dart';
+
+import 'package:new_project/views/artist_screen1.dart';
+import 'package:new_project/views/artist_screen2.dart';
+import 'package:new_project/views/artist_screen4.dart';
+import 'package:new_project/views/artist_screen5.dart';
+
 import 'package:new_project/views/readytoscan_screen.dart';
 import 'package:new_project/views/scaning_screen.dart';
 import 'package:new_project/views/tag_recognization_screen.dart';
@@ -19,7 +26,11 @@ class MyApp extends StatelessWidget {
   
   debugShowCheckedModeBanner: false,
     
-      home:TagRecognizedScreen()
+      home:
+      Artist5ProfileScreen()
+      // TagRecognizedScreen()
+      // ScanningScreen()
+      // ReadyToScanScreen()
     );
   }
 }

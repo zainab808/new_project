@@ -177,87 +177,87 @@ class _TagRecognizedScreenState extends State<TagRecognizedScreen> {
         ],
       ),
 
-      /// 🔹 CUSTOM 100% RESPONSIVE BOTTOM NAV BAR
-      bottomNavigationBar: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final itemWidth = constraints.maxWidth / navItems.length;
+      // /// 🔹 CUSTOM 100% RESPONSIVE BOTTOM NAV BAR
+      // bottomNavigationBar: SafeArea(
+      //   child: LayoutBuilder(
+      //     builder: (context, constraints) {
+      //       final itemWidth = constraints.maxWidth / navItems.length;
 
-            return Container(
-              height: 72,
-              color: Colors.black,
-              child: Row(
-                children: List.generate(navItems.length, (index) {
-                  final isActive = index == _currentIndex;
+      //       return Container(
+      //         height: 72,
+      //         color: Colors.black,
+      //         child: Row(
+      //           children: List.generate(navItems.length, (index) {
+      //             final isActive = index == _currentIndex;
 
-                  return SizedBox(
-                    width: itemWidth,
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 250),
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 10),
-                        decoration: BoxDecoration(
-                          color: isActive
-                              ? const Color(0xff372695)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: isActive
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    navItems[index]['icon']!,
-                                    width: 20,
-                                    height: 20,
-                                    color: Colors.white,
-                                  ),
-                                  const SizedBox(width: 6),
-                                  Text(
-                                    navItems[index]['label']!,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            : Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    navItems[index]['icon']!,
-                                    width: 20,
-                                    height: 20,
-                                    color: Colors.white,
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Text(
-                                    navItems[index]['label']!,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                      ),
-                    ),
-                  );
-                }),
-              ),
-            );
-          },
-        ),
-      ),
+      //             return SizedBox(
+      //               width: itemWidth,
+      //               child: GestureDetector(
+      //                 onTap: () {
+      //                   setState(() {
+      //                     _currentIndex = index;
+      //                   });
+      //                 },
+      //                 child: AnimatedContainer(
+      //                   duration: const Duration(milliseconds: 250),
+      //                   margin: const EdgeInsets.symmetric(
+      //                       horizontal: 6, vertical: 10),
+      //                   decoration: BoxDecoration(
+      //                     color: isActive
+      //                         ? const Color(0xff372695)
+      //                         : Colors.transparent,
+      //                     borderRadius: BorderRadius.circular(20),
+      //                   ),
+      //                   child: isActive
+      //                       ? Row(
+      //                           mainAxisAlignment: MainAxisAlignment.center,
+      //                           children: [
+      //                             Image.asset(
+      //                               navItems[index]['icon']!,
+      //                               width: 20,
+      //                               height: 20,
+      //                               color: Colors.white,
+      //                             ),
+      //                             const SizedBox(width: 6),
+      //                             Text(
+      //                               navItems[index]['label']!,
+      //                               style: const TextStyle(
+      //                                 color: Colors.white,
+      //                                 fontSize: 12,
+      //                                 fontWeight: FontWeight.w500,
+      //                               ),
+      //                             ),
+      //                           ],
+      //                         )
+      //                       : Column(
+      //                           mainAxisAlignment: MainAxisAlignment.center,
+      //                           children: [
+      //                             Image.asset(
+      //                               navItems[index]['icon']!,
+      //                               width: 20,
+      //                               height: 20,
+      //                               color: Colors.white,
+      //                             ),
+      //                             const SizedBox(height: 4),
+      //                             Text(
+      //                               navItems[index]['label']!,
+      //                               style: const TextStyle(
+      //                                 color: Colors.white,
+      //                                 fontSize: 11,
+      //                                 fontWeight: FontWeight.w500,
+      //                               ),
+      //                             ),
+      //                           ],
+      //                         ),
+      //                 ),
+      //               ),
+      //             );
+      //           }),
+      //         ),
+      //       );
+      //     },
+      //   ),
+      // ),
     );
   }
 }
