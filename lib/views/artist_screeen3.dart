@@ -2,6 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_project/components/episode.dart';
+import 'package:new_project/components/tabs_row.dart';
+import 'package:new_project/views/artist_screen1.dart';
+import 'package:new_project/views/artist_screen2.dart';
+import 'package:new_project/views/artist_screen4.dart';
+import 'package:new_project/views/artist_screen5.dart';
+import 'package:new_project/views/artist_screen6.dart';
+import 'package:new_project/views/artist_screen7.dart';
 
 /// ---------------- SONG MODEL ----------------
 class Song {
@@ -270,8 +277,22 @@ class _Artist3ProfileScreenState
                                     ),
                   ),
 SizedBox(height: 10,),
-                    const _TabsRow(),
 
+
+
+
+                  
+  CustomTabsRow(
+  selectedIndex: 1,
+  tabs: ["All", "Songs", "Album", "Merch", "About"],
+  screens: [
+    ArtistProfileScreen(),
+    Artist2ProfileScreen(),
+    Artist5ProfileScreen(),
+    Artist6ProfileScreen(),
+    Artist7ProfileScreen(),
+  ],
+),
 
 
                  ],
@@ -489,56 +510,4 @@ Widget _miniPlayer(Song song) {
     );
   }
 
-class _TabsRow extends StatelessWidget {
-  const _TabsRow();
-
-  @override
-  Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
-
-    // small horizontal spacing
-    final double spacing = w * 0.02;
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(horizontal: w * 0.04, vertical: 5),
-      child: Row(
-        children: [
-          _tab("All", isActive: false),
-          SizedBox(width: spacing),
-          _tab("Songs", isActive: false),
-          SizedBox(width: spacing),
-          _tab("Album", isActive: false),
-          SizedBox(width: spacing),
-          _tab("Merch", isActive: true),
-          SizedBox(width: spacing),
-          _tab("About", isActive: false),
-        ],
-      ),
-    );
-  }
-
-  Widget _tab(String text, {required bool isActive}) {
-    return InkWell(
-      onTap: () {},
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), // small compact tab
-        decoration: BoxDecoration(
-          color: isActive ? Colors.white : Colors.white.withOpacity(0.06),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: isActive ? Colors.black : Colors.white,
-            fontSize: 13, // slightly smaller font
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
-}
+/// ================= TABS =================

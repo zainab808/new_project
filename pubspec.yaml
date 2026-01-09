@@ -82,7 +82,11 @@ flutter:
         - asset: fonts/playfair.ttf        
     - family: Sora
       fonts:
-        - asset: fonts/sora.ttf                    
+        - asset: fonts/sora.ttf  
+    - family: Display
+      fonts:
+        - asset: fonts/display.otf                     
+              
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
