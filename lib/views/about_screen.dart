@@ -305,11 +305,11 @@
 import 'package:flutter/material.dart';
 import 'package:new_project/components/tabs_row.dart';
 import 'package:new_project/views/artist_screeen3.dart';
-import 'package:new_project/views/artist_screen5.dart';
-import 'package:new_project/views/artist_screen6.dart';
-import 'artist_screen1.dart';
+import 'package:new_project/views/album_screen.dart';
+import 'package:new_project/views/merch_screen.dart';
+import 'all_info_screen.dart';
 import 'artist_screen2.dart';
-import 'artist_screen4.dart';
+import 'songs_screen.dart';
 
 class Artist7ProfileScreen extends StatelessWidget {
   const Artist7ProfileScreen({super.key});
@@ -496,7 +496,7 @@ class Artist7ProfileScreen extends StatelessWidget {
                         tabs: const ["All", "Songs", "Album", "Merch", "About"],
                         screens: const [
                           ArtistProfileScreen(),
-                          Artist2ProfileScreen(),
+                          Artist4ProfileScreen(),
                           Artist5ProfileScreen(),
                           Artist6ProfileScreen(),
                           Artist7ProfileScreen(),
@@ -559,8 +559,21 @@ class Artist7ProfileScreen extends StatelessWidget {
                         ),
                       ),
 
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 10),
+                                   Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          "Followers ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            // fontWeight: FontWeight.bold
+                            // height: 1.6,
+                          ),
+                        ),
+                      ),
 
+const SizedBox(height: 20),
 
                       /// ABOUT TEXT
                       Padding(
@@ -585,13 +598,64 @@ class Artist7ProfileScreen extends StatelessWidget {
                       /// SOCIAL LINKS
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
+                        child: Column(
                           children: const [
-                            Icon(Icons.facebook, color: Colors.white),
-                            SizedBox(width: 16),
-                            Icon(Icons.camera_alt, color: Colors.white),
-                            SizedBox(width: 16),
-                            Icon(Icons.alternate_email, color: Colors.white),
+                            Row(
+                              children: [
+                                Icon(Icons.facebook, color: Colors.white),
+                                // SizedBox(width: 10,),
+                                                                Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Facebook ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            // fontWeight: FontWeight.bold
+                            // height: 1.6,
+                          ),
+                        ),
+                      ),
+
+
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.camera_alt, color: Colors.white),
+                                                                        Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Instagram ",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            // fontWeight: FontWeight.bold
+                            // height: 1.6,
+                          ),
+                        ),
+                      ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Row(
+                              children: [
+                                Icon(Icons.alternate_email, color: Colors.white),
+                                                                        Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Text(
+                          "Twitter",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            // fontWeight: FontWeight.bold
+                            // height: 1.6,
+                          ),
+                        ),
+                      ),
+                              ],
+                            ),
                           ],
                         ),
                       ),

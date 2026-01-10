@@ -3,12 +3,12 @@ import 'package:new_project/views/artist_9screen.dart';
 
 import 'package:new_project/views/artist_screeen3.dart';
 
-import 'package:new_project/views/artist_screen1.dart';
+import 'package:new_project/views/all_info_screen.dart';
 import 'package:new_project/views/artist_screen2.dart';
-import 'package:new_project/views/artist_screen4.dart';
-import 'package:new_project/views/artist_screen5.dart';
-import 'package:new_project/views/artist_screen6.dart';
-import 'package:new_project/views/artist_screen7.dart';
+import 'package:new_project/views/songs_screen.dart';
+import 'package:new_project/views/album_screen.dart';
+import 'package:new_project/views/merch_screen.dart' hide Artist6ProfileScreen;
+import 'package:new_project/views/about_screen.dart';
 import 'package:new_project/views/artist_screen8.dart';
 import 'package:new_project/views/readytoscan_screen.dart';
 import 'package:new_project/views/scaning_screen.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     
       home:
       Artist9screen()
-    //  ArtistProfileScreen()
+    //  Artist6ProfileScreen()
     // ArtistVic8screen()
       // TagRecognizedScreen()
       // ScanningScreen()

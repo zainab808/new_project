@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:new_project/components/episode.dart' show BuildTag;
 import 'package:new_project/components/tabs_row.dart';
 import 'package:new_project/views/artist_screeen3.dart';
-import 'package:new_project/views/artist_screen1.dart';
+import 'package:new_project/views/all_info_screen.dart';
 import 'package:new_project/views/artist_screen2.dart';
-import 'package:new_project/views/artist_screen5.dart';
-import 'package:new_project/views/artist_screen6.dart';
-import 'package:new_project/views/artist_screen7.dart';
+import 'package:new_project/views/album_screen.dart';
+import 'package:new_project/views/merch_screen.dart';
+import 'package:new_project/views/about_screen.dart';
 
 class Artist4ProfileScreen extends StatelessWidget {
   const Artist4ProfileScreen({super.key});
@@ -265,7 +265,7 @@ Padding(
           tabs: ["All", "Songs", "Album", "Merch", "About"],
           screens: [
             ArtistProfileScreen(),
-            Artist3ProfileScreen(),
+            Artist4ProfileScreen(),
             Artist5ProfileScreen(),
             Artist6ProfileScreen(),
             Artist7ProfileScreen(),
@@ -345,8 +345,8 @@ Padding(
   /// IMAGE BUTTON
   Widget _imageBtn(String asset) {
     return Container(
-      width: 30,
-      height: 30,
+      width: 25,
+      height: 25,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(

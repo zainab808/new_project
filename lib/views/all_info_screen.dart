@@ -1066,12 +1066,12 @@ import 'package:flutter/material.dart';
 import 'package:new_project/components/tabs_row.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 import 'package:new_project/views/artist_screen2.dart';
-import 'package:new_project/views/artist_screen4.dart';
-import 'package:new_project/views/artist_screen5.dart';
-import 'package:new_project/views/artist_screen6.dart';
-import 'package:new_project/views/artist_screen7.dart';
+import 'package:new_project/views/songs_screen.dart';
+import 'package:new_project/views/album_screen.dart';
+import 'package:new_project/views/merch_screen.dart';
+import 'package:new_project/views/about_screen.dart';
 
-class ArtistProfileScreen extends StatelessWidget {
+class ArtistProfileScreen extends StatefulWidget {
   const ArtistProfileScreen({super.key});
 
   /// 🔹 ALBUM DATA (unlimited)
@@ -1104,6 +1104,14 @@ class ArtistProfileScreen extends StatelessWidget {
   ];
 
   @override
+  State<ArtistProfileScreen> createState() => _ArtistProfileScreenState();
+}
+
+
+class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
+    bool isFollowing = false;
+  @override
+
   Widget build(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
@@ -1216,19 +1224,46 @@ class ArtistProfileScreen extends StatelessWidget {
                       children: [
                         _circleImage('assets/jack.png'),
                         const SizedBox(width: 12),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 7),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: 
-                          const Text(
-                            "Follow",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
+                        // Container(
+                        //   padding: const EdgeInsets.symmetric(
+                        //       horizontal: 30, vertical: 7),
+                        //   decoration: BoxDecoration(
+                        //     color: Colors.white,
+                        //     borderRadius: BorderRadius.circular(30),
+                        //   ),
+                        //   child: 
+                        //   const Text(
+                        //     "Follow",
+                        //     style: TextStyle(fontWeight: FontWeight.bold),
+                        //   ),
+                        // ),
+          
+
+GestureDetector(
+  onTap: () {
+    
+    setState(() {
+      isFollowing = !isFollowing;
+    });
+  },
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Text(
+      isFollowing ? "Following" : "Follow",
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ),
+  ),
+),
+
+
+
+
+
+
                         const Spacer(),
                         _circleImage('assets/more.png'),
                         const SizedBox(width: 18),
@@ -1279,7 +1314,7 @@ class ArtistProfileScreen extends StatelessWidget {
   tabs: ["All", "Songs", "Album", "Merch", "About"],
   screens: [
     ArtistProfileScreen(),
-    Artist2ProfileScreen(),
+    Artist4ProfileScreen(),
     Artist5ProfileScreen(),
     Artist6ProfileScreen(),
     Artist7ProfileScreen(),
@@ -1357,11 +1392,11 @@ class ArtistProfileScreen extends StatelessWidget {
                       padding:
                           const EdgeInsets.symmetric(horizontal: 15),
                       scrollDirection: Axis.horizontal,
-                      itemCount: albums.length,
+                      itemCount: ArtistProfileScreen.albums.length,
                       separatorBuilder: (_, __) =>
                           const SizedBox(width: 14),
                       itemBuilder: (context, index) {
-                        final album = albums[index];
+                        final album = ArtistProfileScreen.albums[index];
                         return _albumCard(
                           image: album['image']!,
                           title: album['title']!,
@@ -1371,7 +1406,21 @@ class ArtistProfileScreen extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 20),
+
+
+
+                  
+                  /// about
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: const Text(
+                      "About",
+                      style:
+                          TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
+ const SizedBox(height: 15),
 
                   /// ================= ABOUT (VERIFIED INSIDE) =================
                   Padding(
@@ -1644,7 +1693,7 @@ class _FanItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: Image.asset(image,
-                width: 70, height: 70, fit: BoxFit.cover),
+                width: 85, height: 85, fit: BoxFit.cover),
           ),
           const SizedBox(height: 6),
           Text(name,
