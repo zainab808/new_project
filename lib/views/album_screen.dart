@@ -823,8 +823,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:new_project/components/artist_moresheet.dart';
 import 'package:new_project/components/episode.dart' show BuildTag;
 import 'package:new_project/components/tabs_row.dart';
+import 'package:new_project/views/artist_9screen.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 import 'package:new_project/views/all_info_screen.dart';
 import 'package:new_project/views/artist_screen2.dart';
@@ -832,9 +834,15 @@ import 'package:new_project/views/songs_screen.dart';
 import 'package:new_project/views/merch_screen.dart';
 import 'package:new_project/views/about_screen.dart';
 
-class Artist5ProfileScreen extends StatelessWidget {
+class Artist5ProfileScreen extends StatefulWidget {
   const Artist5ProfileScreen({super.key});
 
+  @override
+  State<Artist5ProfileScreen> createState() => _Artist5ProfileScreenState();
+}
+
+class _Artist5ProfileScreenState extends State<Artist5ProfileScreen> {
+     bool isFollowing = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -962,26 +970,73 @@ class Artist5ProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: w * 0.06),
                         child: Row(
                           children: [
-                            _imageBtn('assets/jack.png'),
-                            const SizedBox(width: 12),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: const Text(
-                                  "Follow",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                                 InkWell(
+                              onTap: (){},
+                              
+                              
+                              child:
+                                                     InkWell(
+                                onTap: (){
+                                       Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Artist6ProfileScreen(),
+        ),);
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(image: AssetImage("assets/jack.png"))
                                   ),
+                                
                                 ),
-                              ),
-                            ),
-                            const Spacer(),
-                            _imageBtn('assets/more.png'),
+                              )),
+       
+        
+                            const SizedBox(width: 12),
+
+
+                            
+GestureDetector(
+  onTap: () {
+    
+    setState(() {
+      isFollowing = !isFollowing;
+    });
+  },
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Text(
+      isFollowing ? "Following" : "Follow",
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ),
+  ),
+),
+
+
+
+                           const Spacer(),
+                                             InkWell(
+  onTap: () {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => ArtistMoreSheet(
+        artistName: "Russ",
+        artistImage: "assets/jack3.png",
+      ),
+    );
+  },
+  child: _imageBtn('assets/more.png'),
+),
+
+                            // _imageBtn('assets/more.png'),
                             const SizedBox(width: 20),
                             _imageBtn('assets/shuffle.png'),
                             const SizedBox(width: 20),
@@ -995,25 +1050,34 @@ class Artist5ProfileScreen extends StatelessWidget {
                       /// Latest Track Row
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: Container(
-                          height: 40,
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.06),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: const [
-                              Image(image: AssetImage("assets/Rectangle.png")),
-                              SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  "Check out the latest track",
-                                  style: TextStyle(fontSize: 15, color: Colors.white),
+                        child: InkWell(
+                              onTap: (){
+                              Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Artist9screen()));
+
+                      },
+                          child: Container(
+                            height: 40,
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.06),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              children: const [
+                                Image(image: AssetImage("assets/Rectangle.png")),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    "Check out the latest track",
+                                    style: TextStyle(fontSize: 15, color: Colors.white),
+                                  ),
                                 ),
-                              ),
-                              Icon(Icons.arrow_forward_ios, size: 20, color: Colors.white),
-                            ],
+                                Icon(Icons.arrow_forward_ios, size: 20, color: Colors.white),
+                              ],
+                            ),
                           ),
                         ),
                       ),

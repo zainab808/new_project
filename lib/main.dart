@@ -31,8 +31,10 @@ class MyApp extends StatelessWidget {
   debugShowCheckedModeBanner: false,
     
       home:
-      Artist9screen()
-    //  Artist6ProfileScreen()
+      // Artist9screen()
+      ArtistProfileScreen()
+
+    //  ArtistProfileScreen()
     // ArtistVic8screen()
       // TagRecognizedScreen()
       // ScanningScreen()

@@ -2,8 +2,10 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:new_project/components/artist_moresheet.dart';
 import 'package:new_project/components/episode.dart' show BuildTag;
 import 'package:new_project/components/tabs_row.dart';
+import 'package:new_project/views/artist_9screen.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 import 'package:new_project/views/all_info_screen.dart';
 import 'package:new_project/views/artist_screen2.dart';
@@ -11,8 +13,15 @@ import 'package:new_project/views/songs_screen.dart';
 import 'package:new_project/views/album_screen.dart';
 import 'package:new_project/views/about_screen.dart';
 
-class Artist6ProfileScreen extends StatelessWidget {
+class Artist6ProfileScreen extends StatefulWidget {
   const Artist6ProfileScreen({super.key});
+
+  @override
+  State<Artist6ProfileScreen> createState() => _Artist6ProfileScreenState();
+}
+
+class _Artist6ProfileScreenState extends State<Artist6ProfileScreen> {
+     bool isFollowing = false;
 
   @override
   Widget build(BuildContext context) {
@@ -141,26 +150,72 @@ class Artist6ProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: w * 0.06),
                         child: Row(
                           children: [
-                            _imageBtn('assets/jack.png'),
-                            const SizedBox(width: 12),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: const Text(
-                                  "Follow",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                                  InkWell(
+                              onTap: (){},
+                              
+                              
+                              child:
+                                                     InkWell(
+                                onTap: (){
+                                       Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Artist6ProfileScreen(),
+        ),);
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(image: AssetImage("assets/jack.png"))
                                   ),
+                                
                                 ),
-                              ),
-                            ),
+                              )),
+       
+        
+                            const SizedBox(width: 12),
+             
+GestureDetector(
+  onTap: () {
+    
+    setState(() {
+      isFollowing = !isFollowing;
+    });
+  },
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Text(
+      isFollowing ? "Following" : "Follow",
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ),
+  ),
+),
+
+
+
+              
                             const Spacer(),
-                            _imageBtn('assets/more.png'),
+                                              InkWell(
+  onTap: () {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => ArtistMoreSheet(
+        artistName: "Russ",
+        artistImage: "assets/jack3.png",
+      ),
+    );
+  },
+  child: _imageBtn('assets/more.png'),
+),
+
+                            // _imageBtn('assets/more.png'),
                             const SizedBox(width: 20),
                             _imageBtn('assets/shuffle.png'),
                             const SizedBox(width: 20),
@@ -174,25 +229,34 @@ class Artist6ProfileScreen extends StatelessWidget {
                       /// Latest Track Row
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                        child: Container(
-                          height: 40,
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.06),
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            children: const [
-                              Image(image: AssetImage("assets/Rectangle.png")),
-                              SizedBox(width: 12),
-                              Expanded(
-                                child: Text(
-                                  "Check out the latest track",
-                                  style: TextStyle(fontSize: 15, color: Colors.white),
+                        child: InkWell(
+                              onTap: (){
+                              Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Artist9screen()));
+
+                      },
+                          child: Container(
+                            height: 40,
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.06),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Row(
+                              children: const [
+                                Image(image: AssetImage("assets/Rectangle.png")),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    "Check out the latest track",
+                                    style: TextStyle(fontSize: 15, color: Colors.white),
+                                  ),
                                 ),
-                              ),
-                              Icon(Icons.arrow_forward_ios, size: 20, color: Colors.white),
-                            ],
+                                Icon(Icons.arrow_forward_ios, size: 20, color: Colors.white),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -227,31 +291,124 @@ class Artist6ProfileScreen extends StatelessWidget {
 
                       const SizedBox(height: 14),
 
-                      /// 🔹 Albums Grid
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: albums.length,
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2, // 2 albums per row
-                            crossAxisSpacing: 12,
-                            mainAxisSpacing: 12,
-                            childAspectRatio: 120 / 140,
-                          ),
-                          itemBuilder: (context, index) {
-                            final album = albums[index];
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(16),
-                              child: Image.asset(
-                                album,
-                                fit: BoxFit.cover,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+
+Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 16),
+  child: GridView.builder(
+    physics: const NeverScrollableScrollPhysics(),
+    shrinkWrap: true,
+    itemCount: albums.length,
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      crossAxisCount: 2,
+      crossAxisSpacing: 12,
+      mainAxisSpacing: 12,
+      childAspectRatio: 120 / 130, // Thoda lamba height for title
+    ),
+    itemBuilder: (context, index) {
+      final album = albums[index];
+
+      // Example names and prices
+      final List<String> merchNames = [
+        "OVO Essentials",
+        "Scorpion WEA",
+        "OVO Essentials",
+        "Scorpion WEA",
+        "OVO Essentials",
+        "Scorpion WEA",
+      ];
+
+      final List<String> merchPrices = [
+        "\$300",
+        "\$400",
+        "\$300",
+        "\$400",
+        "\$300",
+        "\$400",
+      ];
+
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          color: Colors.transparent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Image
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  album,
+                  height: 130,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              const SizedBox(height: 8),
+
+              // Name
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  merchNames[index],
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+
+              const SizedBox(height: 4),
+
+              // Price
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Text(
+                  merchPrices[index],
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  ),
+),
+
+
+
+
+                      // /// 🔹 Albums Grid
+                      // Padding(
+                      //   padding: const EdgeInsets.symmetric(horizontal: 16),
+                      //   child: GridView.builder(
+                      //     physics: const NeverScrollableScrollPhysics(),
+                      //     shrinkWrap: true,
+                      //     itemCount: albums.length,
+                      //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      //       crossAxisCount: 2, // 2 albums per row
+                      //       crossAxisSpacing: 12,
+                      //       mainAxisSpacing: 12,
+                      //       childAspectRatio: 120 / 140,
+                      //     ),
+                      //     itemBuilder: (context, index) {
+                      //       final album = albums[index];
+                      //       return ClipRRect(
+                      //         borderRadius: BorderRadius.circular(16),
+                      //         child: Image.asset(
+                      //           album,
+                      //           fit: BoxFit.cover,
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
 
                       const SizedBox(height: 20),
                     ],

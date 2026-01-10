@@ -113,31 +113,34 @@ class _CustomTabsRowState extends State<CustomTabsRow> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: List.generate(widget.tabs.length, (index) {
-        final bool isActive = currentIndex == index;
-
-        return InkWell(
-          borderRadius: BorderRadius.circular(20),
-          onTap: () {
-            setState(() {
-              currentIndex = index;
-            });
-
-            // Navigate to the screen
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => widget.screens[index]),
-            );
-          },
-          child: BuildTag(
-            text: widget.tabs[index],
-            bgColor: isActive ? Colors.white : const Color(0xFF2A3352),
-            textColor: isActive ? Colors.black : Colors.white,
-          ),
-        );
-      }),
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: List.generate(widget.tabs.length, (index) {
+          final bool isActive = currentIndex == index;
+      
+          return InkWell(
+            borderRadius: BorderRadius.circular(20),
+            onTap: () {
+              setState(() {
+                currentIndex = index;
+              });
+      
+              // Navigate to the screen
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => widget.screens[index]),
+              );
+            },
+            child: BuildTag(
+              text: widget.tabs[index],
+              bgColor: isActive ? Colors.white : const Color(0xFF2A3352),
+              textColor: isActive ? Colors.black : Colors.white,
+            ),
+          );
+        }),
+      ),
     );
   }
 }

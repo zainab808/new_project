@@ -303,6 +303,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:new_project/components/artist_moresheet.dart';
 import 'package:new_project/components/tabs_row.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 import 'package:new_project/views/album_screen.dart';
@@ -311,9 +312,15 @@ import 'all_info_screen.dart';
 import 'artist_screen2.dart';
 import 'songs_screen.dart';
 
-class Artist7ProfileScreen extends StatelessWidget {
+class Artist7ProfileScreen extends StatefulWidget {
   const Artist7ProfileScreen({super.key});
 
+  @override
+  State<Artist7ProfileScreen> createState() => _Artist7ProfileScreenState();
+}
+
+class _Artist7ProfileScreenState extends State<Artist7ProfileScreen> {
+     bool isFollowing = false;
   @override
   Widget build(BuildContext context) {
        // Sample albums list
@@ -432,22 +439,68 @@ class Artist7ProfileScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: w * 0.06),
                         child: Row(
                           children: [
-                            _circleImg('assets/jack.png'),
-                            const SizedBox(width: 12),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 8),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                              child: const Text(
-                                "Follow",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            const Spacer(),
-                            _circleImg('assets/more.png'),
+                              InkWell(
+                              onTap: (){},
+                              
+                              
+                              child:
+                                                     InkWell(
+                                onTap: (){
+                                       Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Artist6ProfileScreen(),
+        ),);
+                                },
+                                child: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(image: AssetImage("assets/jack.png"))
+                                  ),
+                                
+                                ),
+                              )),
+       
+                          const SizedBox(width: 12),
+                                                        
+GestureDetector(
+  onTap: () {
+    
+    setState(() {
+      isFollowing = !isFollowing;
+    });
+  },
+  child: Container(
+    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(30),
+    ),
+    child: Text(
+      isFollowing ? "Following" : "Follow",
+      style: const TextStyle(fontWeight: FontWeight.bold),
+    ),
+  ),
+),
+
+                          const Spacer(),
+                                            InkWell(
+  onTap: () {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) => ArtistMoreSheet(
+        artistName: "Russ",
+        artistImage: "assets/jack3.png",
+      ),
+    );
+  },
+  child: _circleImg('assets/more.png'),
+),
+
+                            // _circleImg('assets/more.png'),
                             const SizedBox(width: 16),
                             _circleImg('assets/shuffle.png'),
                             const SizedBox(width: 16),
