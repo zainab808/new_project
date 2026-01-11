@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:new_project/components/artist_moresheet.dart';
 import 'package:new_project/components/showsongoption.dart';
 import 'package:new_project/components/tabs_row.dart';
+import 'package:new_project/controller/provider/artistprofileprovider.dart';
 import 'package:new_project/views/artist_9screen.dart';
 import 'package:new_project/views/artist_screeen3.dart';
 import 'package:new_project/views/artist_screen2.dart';
@@ -13,6 +14,7 @@ import 'package:new_project/views/songs_screen.dart';
 import 'package:new_project/views/album_screen.dart';
 import 'package:new_project/views/merch_screen.dart';
 import 'package:new_project/views/about_screen.dart';
+import 'package:provider/provider.dart';
 
 class ArtistProfileScreen extends StatefulWidget {
   const ArtistProfileScreen({super.key});
@@ -207,25 +209,59 @@ class _ArtistProfileScreenState extends State<ArtistProfileScreen> {
                         // ),
           
 
-GestureDetector(
-  onTap: () {
+
+
+
+
+
+
+
+
+
+  /// FOLLOW (PROVIDER)
+                        Consumer<ArtistProfileProvider>(
+                          builder: (context, provider, _) {
+                            return GestureDetector(
+                              onTap: provider.toggleFollow,
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 30, vertical: 7),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: Text(
+                                  provider.isFollowing ? "Following" : "Follow",
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+
+
+
+          
+
+// GestureDetector(
+//   onTap: () {
     
-    setState(() {
-      isFollowing = !isFollowing;
-    });
-  },
-  child: Container(
-    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(30),
-    ),
-    child: Text(
-      isFollowing ? "Following" : "Follow",
-      style: const TextStyle(fontWeight: FontWeight.bold),
-    ),
-  ),
-),
+//     setState(() {
+//       isFollowing = !isFollowing;
+//     });
+//   },
+//   child: Container(
+//     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 7),
+//     decoration: BoxDecoration(
+//       color: Colors.white,
+//       borderRadius: BorderRadius.circular(30),
+//     ),
+//     child: Text(
+//       isFollowing ? "Following" : "Follow",
+//       style: const TextStyle(fontWeight: FontWeight.bold),
+//     ),
+//   ),
+// ),
 
 
 

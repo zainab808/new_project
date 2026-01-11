@@ -675,6 +675,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:new_project/views/all_info_screen.dart';
+import 'package:new_project/views/nowtrendingscreen';
 
 class Artist9screen extends StatefulWidget {
   const Artist9screen({super.key});
@@ -883,6 +884,12 @@ decoration: BoxDecoration(
 
                   const SizedBox(height: 30),
        /// MERCH TITLE
+
+
+
+
+
+
                    Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
@@ -896,15 +903,25 @@ decoration: BoxDecoration(
                           ),
                         ),
                         Spacer(),
-                         Text(
-                          "See All >",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
+                
+InkWell(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const NowTrendingScreen(),
+      ),
+    );
+  },
+  child: const Text(
+    "See All >",
+    style: TextStyle(
+      color: Colors.white,
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+    ),
+  ),
+),         ],
                     ),
                   ),
 

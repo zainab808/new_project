@@ -1,0 +1,326 @@
+// import 'package:flutter/material.dart';
+
+// class NowTrendingScreen extends StatelessWidget {
+//   const NowTrendingScreen({super.key});
+
+//   /// Dummy Merch Data
+//   static final List<Map<String, String>> merchList = [
+//     {
+//       "image": "assets/lac7.png",
+//       "title": "For All The Dogs",
+//       "price": "\$300",
+//     },
+//     {
+//       "image": "assets/jack2.png",
+//       "title": "Drizzy Tee",
+//       "price": "\$280",
+//     },
+//     {
+//       "image": "assets/lac7.png",
+//       "title": "Drizzy Hoodie",
+//       "price": "\$270",
+//     },
+//     {
+//       "image": "assets/jack2.png",
+//       "title": "DLX Hoodie",
+//       "price": "\$250",
+//     },
+//     {
+//       "image": "assets/lac7.png",
+//       "title": "RUSS Hoodie",
+//       "price": "\$290",
+//     },
+//     {
+//       "image": "assets/jack2.png",
+//       "title": "Classic Tee",
+//       "price": "\$240",
+//     },
+//   ];
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: const Color(0xFF0F0F1A),
+//       appBar: AppBar(
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+//           onPressed: () => Navigator.pop(context),
+//         ),
+//         title: const Text(
+//           "Now Trending",
+//           style: TextStyle(color: Colors.white),
+//         ),
+//         centerTitle: true,
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 16),
+//         child: GridView.builder(
+//           itemCount: merchList.length,
+//           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//             crossAxisCount: 2,
+//             crossAxisSpacing: 14,
+//             mainAxisSpacing: 18,
+//             childAspectRatio: 0.65,
+//           ),
+//           itemBuilder: (context, index) {
+//             final item = merchList[index];
+//             return _merchCard(
+//               image: item["image"]!,
+//               title: item["title"]!,
+//               price: item["price"]!,
+//             );
+//           },
+//         ),
+//       ),
+//     );
+//   }
+
+//   /// MERCH CARD (same as image)
+//   Widget _merchCard({
+//     required String image,
+//     required String title,
+//     required String price,
+//   }) {
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         /// Image Card
+//         Expanded(
+//           child: Container(
+//             decoration: BoxDecoration(
+//               color: Colors.white,
+//               borderRadius: BorderRadius.circular(14),
+//             ),
+//             padding: const EdgeInsets.all(12),
+//             child: Image.asset(
+//               image,
+//               fit: BoxFit.contain,
+//             ),
+//           ),
+//         ),
+
+//         const SizedBox(height: 8),
+
+//         /// Title
+//         Text(
+//           title,
+//           maxLines: 1,
+//           overflow: TextOverflow.ellipsis,
+//           style: const TextStyle(
+//             color: Colors.white,
+//             fontSize: 14,
+//             fontWeight: FontWeight.w500,
+//           ),
+//         ),
+
+//         const SizedBox(height: 2),
+
+//         /// Price
+//         Text(
+//           price,
+//           style: const TextStyle(
+//             color: Colors.white70,
+//             fontSize: 13,
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+class NowTrendingScreen extends StatelessWidget {
+  const NowTrendingScreen({super.key});
+
+  /// Dummy Merch Data
+  static final List<Map<String, String>> merchList = [
+    {
+      "image": "assets/lac7.png",
+      "title": "For All The Dogs",
+      "price": "\$300",
+    },
+    {
+      "image": "assets/jack2.png",
+      "title": "Drizzy Tee",
+      "price": "\$280",
+    },
+    {
+      "image": "assets/lac7.png",
+      "title": "Drizzy Hoodie",
+      "price": "\$270",
+    },
+    {
+      "image": "assets/jack2.png",
+      "title": "DLX Hoodie",
+      "price": "\$250",
+    },
+    {
+      "image": "assets/lac7.png",
+      "title": "RUSS Hoodie",
+      "price": "\$290",
+    },
+    {
+      "image": "assets/jack2.png",
+      "title": "Classic Tee",
+      "price": "\$240",
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          /// 🔹 Background Image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/background.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+
+          /// 🔹 Dark Overlay
+          Container(
+            color: Colors.black.withOpacity(0.55),
+          ),
+
+          SafeArea(
+            child: Column(
+              children: [
+                /// 🔹 Custom AppBar
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  child: Row(
+                    children: [
+       
+                    
+                      const Text(
+                        "Now Trending",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                        const Spacer(),
+                           const Spacer(),   
+                                     GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          width: 36,
+                          height: 36,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image:
+                                  AssetImage("assets/right_icon.png"), // same as previous
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      const SizedBox(width: 36),
+                    ],
+                  ),
+                ),
+
+                /// 🔹 Grid
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: GridView.builder(
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: merchList.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 14,
+                        mainAxisSpacing: 18,
+                        childAspectRatio: 0.65,
+                      ),
+                      itemBuilder: (context, index) {
+                        final item = merchList[index];
+                        return _merchCard(
+                          image: item["image"]!,
+                          title: item["title"]!,
+                          price: item["price"]!,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// 🔹 MERCH CARD
+  Widget _merchCard({
+    required String image,
+    required String title,
+    required String price,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        /// Image Card
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Image.asset(
+              image,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 8),
+
+        /// Title
+        Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+
+        const SizedBox(height: 2),
+
+        /// Price
+        Text(
+          price,
+          style: const TextStyle(
+            color: Colors.white70,
+            fontSize: 13,
+          ),
+        ),
+      ],
+    );
+  }
+}

@@ -8,24 +8,29 @@ class CustomQueueBottomSheet extends StatefulWidget {
 class _CustomQueueBottomSheetState extends State<CustomQueueBottomSheet> {
   final List<Map<String, String>> queue = [
     {
-      "title": "WTF with Marc Maron",
-      "subtitle": "Marc Maron",
-      "image": "assets/artist1.png",
+      "title":'Losin Control',
+      "subtitle": 'Russ • 88M plays',
+      "image":'assets/artist2.png',
     },
     {
-      "title": "Turning Moments Into Lessons",
-      "subtitle": "The Pivot Podcast",
-      "image": "assets/artist2.png",
+      "title": 'Sanctified',
+      "subtitle": 'Russ • 204M plays',
+      "image":'assets/artist1.png',
     },
-    {
-      "title": "Conversations Without Limits",
-      "subtitle": "Joe Rogan Experience",
-      "image": "assets/artist3.png",
+  
+      {
+      "title": 'Sanctified',
+      "subtitle": 'Russ • 204M plays',
+      "image":'assets/artist1.png',
+    },   {
+      "title": 'Sanctified',
+      "subtitle": 'Russ • 204M plays',
+      "image":'assets/artist1.png',
     },
-    {
-      "title": "The Culture's Unfiltered Voice",
-      "subtitle": "Joe Budden Podcast",
-      "image": "assets/artist4.png",
+       {
+      "title": 'Sanctified',
+      "subtitle": 'Russ • 204M plays',
+      "image":'assets/artist1.png',
     },
   ];
 
